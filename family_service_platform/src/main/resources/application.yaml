@@ -1,0 +1,27 @@
+#项目启动端口
+server:
+  port: 8080
+#数据源配置，默认有hikaricp数据库连接池，没必要配置
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/hejia?useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#配置环境，生产环境，测试环境，开发环境等等
+#  profiles:
+#    active: dev
+#配置mybatis：全局配置+多个mapper文件
+#mapper-locations: classpath:mapper文件路径，也可以把文件放到src目录下创建多层目录
+#map-underscore-to-camel-case:配置驼峰标识，true
+mybatis:
+  mapper-locations: classpath:com/jtt/mapper/common/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+#sql语句日志打印，添加目录，多级目录
+logging:
+  level:
+    com:
+      jtt:
+        mapper:
+          common: debug
